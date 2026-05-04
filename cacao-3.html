@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine Flavour Cacao — Hacienda Labu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Syne',sans-serif;background:#f4ede0;color:#1a1a14;overflow-x:hidden;cursor:none;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;}
+
+:root{
+  --bg:#f4ede0;--bg-alt:#ece4d0;--bg-dark:#e2d8c4;--bg-section:#f0e8d8;
+  --text:#1a1a14;--text-mid:#2e2e22;--text-dim:#3a3a2c;--text-sub:#7a7a62;
+  --green:#2a5e3a;--green-lt:#3a7a4e;
+  --amber:#8a5010;--amber-lt:#b06820;
+  --cacao:#5c2e10;--cp:#a06030;
+  --border:rgba(26,26,20,.12);--border-med:rgba(26,26,20,.20);--border-dk:rgba(26,26,20,.32);
+  --surface-dk:#2e3c2e;--sdk-text:#f0ead8;
+}
+
+.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--green);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply;transition:width .18s,height .18s;}
+.cursor-ring{position:fixed;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(42,94,58,.4);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;}
+
+nav{position:sticky;top:0;z-index:100;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(244,237,224,.97);border-bottom:1px solid var(--border-dk);backdrop-filter:blur(14px);}
+.nav-logo{display:flex;flex-direction:column;text-decoration:none;line-height:1;gap:2px;}
+.nav-logo-top{font-size:9px;font-weight:700;letter-spacing:.42em;text-transform:uppercase;color:var(--amber);}
+.nav-logo-name{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--text);letter-spacing:.04em;font-style:italic;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);transition:color .2s;}
+.nav-links a:hover{color:var(--green);}
+.nav-links a.active{color:var(--green);border-bottom:1.5px solid var(--green);padding-bottom:1px;}
+.nav-cta{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#f4ede0;background:var(--green);padding:11px 24px;transition:background .2s;}
+.nav-cta:hover{background:var(--green-lt);}
+
+.inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:12.5px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.section-label::before{content:'';width:36px;height:1.5px;background:var(--green);opacity:.6;}
+.section-h{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(46px,6vw,76px);color:var(--text);line-height:.98;margin-bottom:14px;}
+.section-rule{width:40px;height:2px;background:var(--cp);margin:16px 0;}
+.section-body{font-size:16px;color:var(--text-dim);line-height:1.85;}
+section.content{padding:96px 56px;}
+.two-col{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start;}
+
+/* ── HERO ── */
+.hero{min-height:88vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-image:linear-gradient(135deg,rgba(26,40,24,.55) 0%,rgba(46,60,46,.55) 50%,rgba(26,26,20,.65) 100%),url('images/cacao-hero.jpg');background-color:#1a2818;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,12,6,.98) 0%,rgba(8,12,6,.72) 35%,rgba(8,12,6,.3) 65%,rgba(8,12,6,.08) 100%);}
+.hero-inner{position:relative;z-index:2;padding:0 80px 80px 108px;max-width:880px;}
+.hero-eyebrow{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);font-weight:600;font-style:italic;letter-spacing:.03em;color:rgba(255,255,255,.95);margin-bottom:18px;text-shadow:0 1px 12px rgba(0,0,0,.45);}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(72px,10vw,140px);line-height:.88;color:#ffffff;margin-bottom:20px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+.hero-tagline{font-size:18px;color:rgba(255,255,255,.92);max-width:620px;line-height:1.75;margin-bottom:28px;text-shadow:0 1px 10px rgba(0,0,0,.3);}
+.hero-tagline strong{color:#ffffff;font-weight:600;}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.hero-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(255,255,255,.42);color:rgba(255,255,255,.9);background:rgba(255,255,255,.1);backdrop-filter:blur(4px);}
+.hero-bc{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.hero-bc a{color:rgba(255,255,255,.72);}
+.hero-bc span{opacity:.55;}
+
+/* ── STATS BAR ── */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface-dk);border-bottom:3px solid var(--amber);}
+.sb{padding:22px 24px;border-right:1px solid rgba(240,234,216,.15);transition:background .2s;}
+.sb:hover{background:rgba(240,234,216,.08);}
+.sb:last-child{border-right:none;}
+.sb-val{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--sdk-text);line-height:1;display:block;margin-bottom:6px;}
+.sb-lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,234,216,.88);}
+
+/* ── ORIGIN FEATURE GRID ── */
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:48px;}
+.feat{background:var(--bg-alt);border:1px solid var(--border-dk);padding:32px 28px;transition:background .2s;}
+.feat:hover{background:var(--bg-section);}
+.feat-icon{font-size:32px;margin-bottom:14px;line-height:1;}
+.feat-title{font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);margin-bottom:12px;}
+.feat-body{font-size:14.5px;color:var(--text-mid);line-height:1.7;}
+
+/* ── PHOTO STRIP ── */
+.photo-strip{height:380px;background:url('images/asocio-plantation.jpg') center/cover no-repeat,linear-gradient(135deg,#3a5a3a 0%,#1a2818 100%);background-color:#1a2818;position:relative;overflow:hidden;}
+.photo-strip::after{content:'ASOCIO PLANTATION · RACCN, NICARAGUA';position:absolute;bottom:24px;left:32px;font-size:11px;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,.85);background:rgba(8,12,6,.55);padding:6px 14px;border:1px solid rgba(255,255,255,.22);}
+
+/* ── PARTNER QUOTES ── */
+.partner-strip{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.pq{background:var(--bg-alt);border:1px solid var(--border-dk);padding:42px 36px;position:relative;}
+.pq-mark{font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:300;color:var(--bg-dark);line-height:.7;position:absolute;top:18px;left:24px;}
+.pq-label{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--cp);margin-bottom:14px;position:relative;z-index:2;}
+.pq-text{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--text-mid);line-height:1.55;position:relative;z-index:2;}
+.pq-source{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-sub);margin-top:18px;}
+
+/* ── ASOCIO SYSTEM (dark) ── */
+.asocio{background:var(--surface-dk);color:var(--sdk-text);padding:96px 56px;position:relative;overflow:hidden;}
+.asocio::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(176,104,32,.18),transparent 55%),radial-gradient(ellipse at 10% 80%,rgba(58,122,78,.32),transparent 60%);pointer-events:none;}
+.asocio-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.asocio .section-label{color:#e09a3a;}
+.asocio .section-label::before{background:#e09a3a;}
+.asocio .section-h{color:var(--sdk-text);}
+.asocio-body{font-size:18px;line-height:1.8;color:rgba(240,234,216,.88);max-width:780px;margin-bottom:48px;}
+.asocio-body em{font-family:'Cormorant Garamond',serif;font-style:italic;color:#e09a3a;font-weight:400;font-size:1.05em;}
+.asocio-body strong{color:#ffffff;font-weight:600;}
+.asocio-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(240,234,216,.18);}
+.as{padding:32px 24px 0 0;border-right:1px solid rgba(240,234,216,.18);}
+.as:not(:first-child){padding-left:32px;}
+.as:last-child{border-right:none;padding-right:0;}
+.as-val{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:300;color:#e09a3a;line-height:1;display:block;margin-bottom:14px;}
+.as-lab{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sdk-text);line-height:1.6;}
+
+/* ── BEAN PROFILES ── */
+.profiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:40px;}
+.bean{background:var(--bg);border:1px solid var(--border-dk);padding:32px 26px;position:relative;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;}
+.bean::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cp);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.bean:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,26,20,.1);}
+.bean:hover::before{transform:scaleX(1);}
+.bean-letter{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:300;font-style:italic;color:var(--bg-dark);line-height:1;margin-bottom:4px;}
+.bean-name{font-family:'Cormorant Garamond',serif;font-size:36px;font-style:italic;color:var(--text);line-height:1;margin-bottom:6px;}
+.bean-ferm{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cacao);margin-bottom:18px;}
+.bean-divider{width:32px;height:1.5px;background:var(--cp);margin-bottom:14px;}
+.bf-label{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-top:14px;margin-bottom:5px;}
+.bf-val{font-size:14px;color:var(--text-mid);line-height:1.55;}
+.bf-origin{font-size:13px;color:var(--text-sub);font-style:italic;margin-top:4px;line-height:1.5;}
+.bf-quote{font-family:'Cormorant Garamond',serif;font-size:14.5px;font-style:italic;color:var(--green);margin-top:6px;line-height:1.5;}
+.bean-cta{display:inline-flex;align-items:center;gap:7px;margin-top:auto;padding-top:18px;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--green);border-bottom:1px solid transparent;transition:all .2s;align-self:flex-start;}
+.bean-cta:hover{border-bottom-color:var(--green);gap:11px;}
+.bean-custom{border:2px dashed var(--green);background:rgba(42,94,58,.04);}
+.bean-custom::before{background:var(--green);}
+.bean-custom .bean-letter{color:var(--green);opacity:.4;}
+.bean-nda{font-size:11px;color:var(--text-sub);font-style:italic;text-align:center;margin-top:24px;}
+
+/* ── POST-HARVEST STEPS ── */
+.process-steps{display:flex;flex-direction:column;gap:2px;margin-top:36px;}
+.ps-row{display:flex;align-items:flex-start;gap:24px;padding:22px;background:var(--bg-alt);border:1px solid var(--border-dk);border-top:none;transition:background .2s;}
+.ps-row:first-child{border-top:1px solid var(--border-dk);}
+.ps-row:hover{background:var(--bg-section);}
+.ps-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--cp);line-height:1;flex:0 0 50px;}
+.ps-content{flex:1;}
+.ps-title{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:7px;}
+.ps-body{font-size:14.5px;color:var(--text-mid);line-height:1.7;}
+
+/* ── PHOTO GRID ── */
+.photo-4{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:36px;}
+.ph4{height:240px;position:relative;background-size:cover;background-position:center;overflow:hidden;}
+.ph4:nth-child(1){background-image:url('images/pods-at-harvest.jpg');background-color:#5c2e10;}
+.ph4:nth-child(2){background-image:url('images/fresh-beans-in-pod.jpg');background-color:#5a3a18;}
+.ph4:nth-child(3){background-image:url('images/fermentation.jpg');background-color:#3a5a3a;}
+.ph4:nth-child(4){background-image:url('images/ready-for-export.jpg');background-color:#7a4a20;}
+.ph4-label{position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;background:linear-gradient(to top,rgba(8,12,6,.85),transparent);font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.92);}
+
+/* ── PRODUCTION SCALE ── */
+.prod-chart{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;margin-top:40px;align-items:end;height:280px;padding:0 4px;}
+.pc-col{display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;}
+.pc-bar{background:linear-gradient(to top,var(--cacao),var(--cp));width:100%;min-height:8px;transition:all .3s;border-top:2px solid var(--amber);}
+.pc-col:hover .pc-bar{filter:brightness(1.15);}
+.pc-val{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:400;color:var(--text);}
+.pc-year{font-size:10px;font-weight:700;color:var(--text-dim);letter-spacing:.06em;}
+.prod-stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface-dk);margin-top:3px;}
+.prs{padding:22px 24px;border-right:1px solid rgba(240,234,216,.15);}
+.prs:last-child{border-right:none;}
+.prs-val{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:#e09a3a;display:block;margin-bottom:5px;line-height:1;}
+.prs-lab{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,234,216,.85);}
+.prod-note{font-size:13px;color:var(--text-sub);font-style:italic;margin-top:18px;line-height:1.7;}
+
+/* ── SPEC TABLE ── */
+.spec-table{width:100%;border-collapse:collapse;}
+.spec-table tr{border-bottom:1px solid var(--border-med);transition:background .15s;}
+.spec-table tr:first-child{border-top:1px solid var(--border-med);}
+.spec-table tr:hover{background:var(--bg-alt);}
+.spec-table td{padding:15px 4px;font-size:14px;vertical-align:top;}
+.spec-table td:first-child{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);width:200px;padding-right:16px;padding-top:17px;}
+.spec-table td:last-child{color:var(--text-mid);line-height:1.6;}
+
+/* ── FAQ ── */
+.faq-c{display:flex;flex-direction:column;}
+.faq-item{border-bottom:1px solid var(--border-med);}
+.faq-item:first-child{border-top:1px solid var(--border-med);}
+.faq-q{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);padding:18px 0 8px;line-height:1.4;}
+.faq-a{font-size:14.5px;color:var(--text-mid);line-height:1.75;padding-bottom:18px;}
+
+/* ── CONTACT ── */
+.contact{background:var(--bg-section);padding:96px 56px;}
+.inq-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start;max-width:1200px;margin:0 auto;}
+.ic{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:var(--bg);border:1px solid var(--border-dk);margin-bottom:3px;transition:background .15s;}
+.ic:hover{background:var(--bg-alt);}
+.ic-icon{font-size:22px;flex-shrink:0;}
+.ic-title{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:4px;}
+.ic-body{font-size:14.5px;color:var(--text-mid);line-height:1.6;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f4ede0;background:var(--green);padding:14px 30px;border:none;cursor:none;transition:all .2s;align-self:flex-start;}
+.btn-primary:hover{background:var(--green-lt);gap:15px;}
+.form{display:flex;flex-direction:column;gap:14px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-label{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--text-sub);}
+.form-input,.form-select,.form-textarea{background:var(--bg);border:1.5px solid var(--border-dk);color:var(--text);font-family:'Syne',sans-serif;font-size:13.5px;padding:12px 14px;outline:none;transition:border-color .2s;width:100%;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--green);}
+.form-textarea{resize:vertical;min-height:110px;}
+
+/* ── FOOTER ── */
+footer{background:var(--surface-dk);padding:56px 56px 0;}
+.foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:52px;padding-bottom:44px;border-bottom:1px solid rgba(240,234,216,.18);}
+.foot-logo-name{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;font-style:italic;color:var(--sdk-text);margin-bottom:3px;}
+.foot-logo-tag{font-size:9px;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:#e09a3a;opacity:.95;}
+.foot-desc{font-size:14.5px;color:rgba(240,234,216,.78);line-height:1.85;margin-top:14px;max-width:240px;}
+.fc h5{font-size:9px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:rgba(240,234,216,.78);margin-bottom:16px;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.fc ul a{font-size:14.5px;color:rgba(240,234,216,.88);transition:color .2s;display:flex;align-items:center;gap:8px;}
+.fc ul a::before{content:'';width:8px;height:1px;background:rgba(240,234,216,.35);transition:width .2s;}
+.fc ul a:hover{color:var(--sdk-text);}
+.fc ul a:hover::before{width:14px;}
+.foot-bottom{padding:16px 0;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(240,234,216,.12);}
+.foot-copy{font-size:12px;color:rgba(240,234,216,.72);letter-spacing:.06em;}
+.foot-certs{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(240,234,216,.65);}
+
+@media (max-width:980px){
+  body{cursor:auto;}
+  .cursor,.cursor-ring{display:none;}
+  nav{padding:0 16px;height:auto;flex-wrap:wrap;}
+  .nav-links{display:none;}
+  .hero-inner{padding:0 24px 56px 24px;}
+  section.content,.asocio,.contact{padding:64px 20px;}
+  .two-col,.inq-grid{grid-template-columns:1fr;gap:36px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .feature-grid,.partner-strip,.profiles-grid,.photo-4,.prod-stats{grid-template-columns:1fr;}
+  .asocio-stats{grid-template-columns:1fr;border-top:none;}
+  .as{padding:24px 0;border-right:none;border-bottom:1px solid rgba(240,234,216,.18);}
+  .as:not(:first-child){padding-left:0;}
+  .as:last-child{border-bottom:none;}
+  .prod-chart{grid-template-columns:repeat(11,1fr);height:200px;}
+  .pc-val{font-size:10px;}
+  .pc-year{font-size:8.5px;}
+  .form-row{grid-template-columns:1fr;}
+  .foot-top{grid-template-columns:1fr;gap:32px;}
+  .foot-bottom{flex-direction:column;gap:10px;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="c"></div>
+<div class="cursor-ring" id="cr"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-top">Hacienda</span>
+    <span class="nav-logo-name">Labu</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="teak.html">Teak</a></li>
+    <li><a href="cacao.html" class="active">Cacao</a></li>
+    <li><a href="carbon.html">Carbon Credits</a></li>
+    <li><a href="impact.html">Sustainability</a></li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Let's Talk →</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-bc"><a href="index.html">Home</a><span>/</span><span>Cacao</span></div>
+    <div class="hero-eyebrow">Single-Estate Fine Flavour Cacao</div>
+    <h1 class="hero-h1">Fine Flavour<br/>Cacao</h1>
+    <p class="hero-tagline">
+      Grown in the shade of certified Teak on Nicaragua's Caribbean Coast. Two named profiles — <strong>Labu</strong> and <strong>Chumilo</strong> — across a diverse genetic base. Newly inaugurated processing facility with highly experienced post-harvest team. We have worked hand in hand with some of the most recognised names in chocolate manufacturing to develop specific Fine Flavour Cacao profiles. Rainforest Alliance certified.
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">Rainforest Alliance</span>
+      <span class="hero-tag">Single Estate</span>
+      <span class="hero-tag">Fine Flavour</span>
+      <span class="hero-tag">FOB Corinto</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats">
+  <div class="sb"><span class="sb-val">1,100</span><span class="sb-lab">ha Cacao</span></div>
+  <div class="sb"><span class="sb-val">2</span><span class="sb-lab">Named Profiles</span></div>
+  <div class="sb"><span class="sb-val">12+</span><span class="sb-lab">Genetic Varieties</span></div>
+  <div class="sb"><span class="sb-val">350→1,500</span><span class="sb-lab">MT Target</span></div>
+  <div class="sb"><span class="sb-val">RA</span><span class="sb-lab">Certified</span></div>
+</div>
+
+<!-- ═══ THE ORIGIN ═══ -->
+<section class="content">
+  <div class="inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">The Origin</div>
+        <h2 class="section-h">Climate, intention,<br/>and <em style="font-style:italic;color:var(--cacao);">expertise.</em></h2>
+        <div class="section-rule"></div>
+      </div>
+      <div>
+        <p class="section-body">
+          Hacienda Labu cacao grows under the shade of certified Teak on Nicaragua's North Caribbean Coast — a humid tropical microclimate with 2,400–3,000 mm of annual rainfall and an average temperature of 28°C. These conditions, unique in Central America, produce beans of exceptional flavour complexity across a diverse genetic base.
+        </p>
+        <p class="section-body" style="margin-top:18px;">
+          Our post-harvest team operates a newly inaugurated processing facility developed in close collaboration with internationally recognised cacao consultants. Fermentation and drying protocols are proprietary, refined specifically for our RACCN microclimate — available to qualified buyers under NDA.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feat">
+        <div class="feat-icon">🌿</div>
+        <div class="feat-title">Shade-Grown Asocio System</div>
+        <div class="feat-body">Cacao grown beneath the certified Teak canopy — natural humidity regulation, reduced heat stress, lower pest pressure. The microclimate behind the flavour.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🧬</div>
+        <div class="feat-title">Rich Genetic Diversity</div>
+        <div class="feat-body">ICS, EET, UF, IMC, CATIE, and Native Criollo varieties — 12+ genetic varieties contributing distinct flavour character across our two named profiles.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🏭</div>
+        <div class="feat-title">Newly Inaugurated Processing Facility</div>
+        <div class="feat-body">Newly inaugurated post-harvest facility with fermentation boxes, covered drying beds, and QC laboratory. Highly experienced team with decades of expertise in Fine Flavour Cacao.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">✅</div>
+        <div class="feat-title">Rainforest Alliance Certified</div>
+        <div class="feat-body">Annual independent audit — sustainable agriculture, fair labour, environmental protection. Very low to no cadmium. Very low to no pesticide residues. Full traceability from pod to bag.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO STRIP ═══ -->
+<div class="photo-strip"></div>
+
+<!-- ═══ PARTNER QUOTES ═══ -->
+<section class="content" style="padding-top:0;padding-bottom:0;">
+  <div class="partner-strip">
+    <div class="pq">
+      <div class="pq-mark">"</div>
+      <div class="pq-label">Partner Voice · Chocolatier</div>
+      <p class="pq-text">We have worked closely with Hacienda Labu to co-develop a flavour profile that fits our production process precisely. The traceability, the consistency, and the story behind the beans are exactly what today's premium chocolate market demands.</p>
+      <div class="pq-source">— Chocolatier Partner</div>
+    </div>
+    <div class="pq">
+      <div class="pq-mark">"</div>
+      <div class="pq-label">Partner Voice · Chocolatier</div>
+      <p class="pq-text">Labu has become our standard replacement for Ghana cocoa. The balance of cocoa note and roasty character is consistent batch after batch — something very rare in single-estate sourcing at this scale.</p>
+      <div class="pq-source">— Chocolatier Partner</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE ASOCIO SYSTEM ═══ -->
+<section class="asocio">
+  <div class="asocio-inner">
+    <div class="section-label">The Asocio System</div>
+    <h2 class="section-h">Why shade-grown<br/><em>changes everything.</em></h2>
+    <div class="section-rule" style="background:#e09a3a;"></div>
+    <p class="asocio-body">
+      The <em>asocio</em> method — cacao planted beneath the canopy of certified Teak — creates a stable microclimate that allows slower pod development, deeper flavour complexity, and reduced pest pressure.
+    </p>
+
+    <div class="asocio-stats">
+      <div class="as">
+        <span class="as-val">28°C</span>
+        <div class="as-lab">Average Temperature — stable humid tropical climate, 2,400–3,000 mm rainfall</div>
+      </div>
+      <div class="as">
+        <span class="as-val">12+</span>
+        <div class="as-lab">Genetic Varieties — ICS, EET, UF, IMC, CATIE, native Criollo</div>
+      </div>
+      <div class="as">
+        <span class="as-val">NDA</span>
+        <div class="as-lab">Post-Harvest Protocols — proprietary, available to qualified buyers under NDA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEAN PROFILES ═══ -->
+<section class="content">
+  <div class="inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Bean Profiles</div>
+        <h2 class="section-h">Two named expressions<br/>and one <em style="font-style:italic;color:var(--cacao);">built for you.</em></h2>
+        <div class="section-rule"></div>
+      </div>
+      <div>
+        <p class="section-body">
+          Each profile takes its name from the indigenous languages of Nicaragua's North Caribbean Coast. Each represents a distinct genetic blend, processed under one of our proprietary post-harvest protocols.
+        </p>
+      </div>
+    </div>
+
+    <div class="profiles-grid">
+      <article class="bean">
+        <div class="bean-letter">A</div>
+        <div class="bean-name">Labu</div>
+        <div class="bean-ferm">90% Fermentation</div>
+        <div class="bean-divider"></div>
+
+        <div class="bf-label">Tasting Notes</div>
+        <div class="bf-val">Very balanced cocoa mass. Strong cocoa note, pleasantly mild. Good roasted note and nutty aromas.</div>
+
+        <div class="bf-label">Varieties</div>
+        <div class="bf-val">ICS · EET · UF · IMC</div>
+
+        <div class="bf-label">Origin</div>
+        <div class="bf-origin">Named after the Labu River — meaning "Twists or Turns" in the local indigenous language.</div>
+
+        <div class="bf-label">Market Position</div>
+        <div class="bf-quote">"Preferred by clients as a replacement for Ghana Cacao"</div>
+
+        <a href="#contact" class="bean-cta">Let's Talk →</a>
+      </article>
+
+      <article class="bean">
+        <div class="bean-letter">E</div>
+        <div class="bean-name">Chumilo</div>
+        <div class="bean-ferm">80%+ Fermentation</div>
+        <div class="bean-divider"></div>
+
+        <div class="bf-label">Tasting Notes</div>
+        <div class="bf-val">Complex cocoa mass with many peaks. Strong cocoa note, balance of fruity and floral aromas. Pleasant acidity.</div>
+
+        <div class="bf-label">Varieties</div>
+        <div class="bf-val">ICS · EET · UF · Native Criollo</div>
+
+        <div class="bf-label">Origin</div>
+        <div class="bf-origin">Estate zone profile — complex expression of the full genetic diversity of Hacienda Labu.</div>
+
+        <div class="bf-label">Market Position</div>
+        <div class="bf-quote">"Preferred by clients as a replacement for Trinitario"</div>
+
+        <a href="#contact" class="bean-cta">Let's Talk →</a>
+      </article>
+
+      <article class="bean bean-custom">
+        <div class="bean-letter">✦</div>
+        <div class="bean-name">Your Profile</div>
+        <div class="bean-ferm">Custom Development</div>
+        <div class="bean-divider"></div>
+
+        <div class="bf-label">Collaboration</div>
+        <div class="bf-val">We work with your procurement, marketing, and product development teams to design and produce the exact flavour your brand needs.</div>
+
+        <div class="bf-label">Process</div>
+        <div class="bf-val">Trial fermentations → sensory evaluation → protocol refinement → commercial production. A named, repeatable profile — season after season.</div>
+
+        <a href="#contact" class="bean-cta">Start a Conversation →</a>
+      </article>
+    </div>
+
+    <p class="bean-nda">Fermentation details available under NDA to qualified buyers.</p>
+  </div>
+</section>
+
+<!-- ═══ POST-HARVEST ═══ -->
+<section class="content" style="background:var(--bg-alt);">
+  <div class="inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Post-Harvest · Newly Inaugurated 5,000 m² Facility</div>
+        <h2 class="section-h">From pod to bag.<br/>Precision at <em style="font-style:italic;color:var(--cacao);">every step.</em></h2>
+        <div class="section-rule"></div>
+      </div>
+      <div>
+        <p class="section-body">
+          Our newly inaugurated processing facility handles every step from pod break to export-ready bag. Staffed by a highly experienced team, supported by internationally recognised consultants in Fine Flavour Cacao agronomy, soil science, and sensory evaluation.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <div class="section-label" style="color:var(--cacao);">The Process</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:36px;color:var(--text);line-height:1.1;margin-bottom:8px;">Five steps from harvest to export.</h3>
+    </div>
+
+    <div class="process-steps">
+      <div class="ps-row"><div class="ps-num">01</div><div class="ps-content"><div class="ps-title">Harvest &amp; Pod Break</div><div class="ps-body">Selective hand-picking at peak ripeness. Main harvest March–July. Secondary harvest December–February. Pods broken and beans separated from pulp immediately.</div></div></div>
+      <div class="ps-row"><div class="ps-num">02</div><div class="ps-content"><div class="ps-title">Fermentation</div><div class="ps-body">6–10 days in 500 kg wooden boxes covered with jute sacking. Beans turned every 24 hours to ensure even fermentation. Profile-specific protocols applied — 85–90% fermentation index achieved.</div></div></div>
+      <div class="ps-row"><div class="ps-num">03</div><div class="ps-content"><div class="ps-title">Natural Slow-Drying</div><div class="ps-body">8–13 days on raised wooden drying beds. Begins at 10 cm layer depth for 3 days, then reduced to 5 cm. Drying time varies with humidity, sunlight, and desired profile.</div></div></div>
+      <div class="ps-row"><div class="ps-num">04</div><div class="ps-content"><div class="ps-title">Quality Control</div><div class="ps-body">Cut test analysis, moisture measurement, sensory evaluation by trained panel. Very low to no cadmium. Very low to no pesticide residues.</div></div></div>
+      <div class="ps-row"><div class="ps-num">05</div><div class="ps-content"><div class="ps-title">Export Preparation</div><div class="ps-body">Standard 60 kg jute bags. Moisture ≤7% confirmed at dispatch. Full Rainforest Alliance documentation, phytosanitary certificate, and origin traceability. FOB Corinto — 30–50 day delivery.</div></div></div>
+    </div>
+
+    <div class="photo-4">
+      <div class="ph4"><div class="ph4-label">Pods at Harvest</div></div>
+      <div class="ph4"><div class="ph4-label">Fresh Beans in Pod</div></div>
+      <div class="ph4"><div class="ph4-label">Fermentation</div></div>
+      <div class="ph4"><div class="ph4-label">Ready for Export</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTION SCALE ═══ -->
+<section class="content">
+  <div class="inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Production Scale</div>
+        <h2 class="section-h">Growing to meet<br/><em style="font-style:italic;color:var(--cacao);">your volume.</em></h2>
+        <div class="section-rule"></div>
+      </div>
+      <div>
+        <p class="section-body">
+          Plantation maturity drives a confirmed production trajectory through 2033. Volume buyers can plan long-term supply agreements with confidence.
+        </p>
+      </div>
+    </div>
+
+    <div class="prod-chart">
+      <div class="pc-col"><div class="pc-val">90</div><div class="pc-bar" style="height:5%;"></div><div class="pc-year">2023</div></div>
+      <div class="pc-col"><div class="pc-val">176</div><div class="pc-bar" style="height:10%;"></div><div class="pc-year">2024</div></div>
+      <div class="pc-col"><div class="pc-val">415</div><div class="pc-bar" style="height:25%;"></div><div class="pc-year">2025</div></div>
+      <div class="pc-col"><div class="pc-val">701</div><div class="pc-bar" style="height:42%;"></div><div class="pc-year">2026</div></div>
+      <div class="pc-col"><div class="pc-val">896</div><div class="pc-bar" style="height:53%;"></div><div class="pc-year">2027</div></div>
+      <div class="pc-col"><div class="pc-val">979</div><div class="pc-bar" style="height:58%;"></div><div class="pc-year">2028</div></div>
+      <div class="pc-col"><div class="pc-val">1,105</div><div class="pc-bar" style="height:66%;"></div><div class="pc-year">2029</div></div>
+      <div class="pc-col"><div class="pc-val">1,291</div><div class="pc-bar" style="height:77%;"></div><div class="pc-year">2030</div></div>
+      <div class="pc-col"><div class="pc-val">1,504</div><div class="pc-bar" style="height:89%;"></div><div class="pc-year">2031</div></div>
+      <div class="pc-col"><div class="pc-val">1,670</div><div class="pc-bar" style="height:99%;"></div><div class="pc-year">2032</div></div>
+      <div class="pc-col"><div class="pc-val">1,682</div><div class="pc-bar" style="height:100%;"></div><div class="pc-year">2033</div></div>
+    </div>
+
+    <div class="prod-stats">
+      <div class="prs"><span class="prs-val">1,682</span><span class="prs-lab">MT Projected by 2033</span></div>
+      <div class="prs"><span class="prs-val">NY+</span><span class="prs-lab">NY Base + Premium · contact for current rate</span></div>
+      <div class="prs"><span class="prs-val">FOB</span><span class="prs-lab">Corinto, Nicaragua · 30–50 days to destination</span></div>
+      <div class="prs"><span class="prs-val">2×</span><span class="prs-lab">Harvests per Year · Mar–Jul &amp; Dec–Feb</span></div>
+    </div>
+
+    <p class="prod-note">Pricing based on New York futures base price plus a sustainability premium. Contact us for current pricing and available volume by profile.</p>
+  </div>
+</section>
+
+<!-- ═══ ORDERING ═══ -->
+<section class="content" style="background:var(--bg-alt);">
+  <div class="inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Ordering</div>
+        <h2 class="section-h">Everything a chocolatier<br/><em style="font-style:italic;color:var(--cacao);">needs to know.</em></h2>
+        <div class="section-rule"></div>
+      </div>
+      <div>
+        <table class="spec-table">
+          <tr><td>Certification</td><td>Rainforest Alliance (UTZ) — annual independent audit</td></tr>
+          <tr><td>Packaging</td><td>Standard 60 kg jute bags</td></tr>
+          <tr><td>Moisture</td><td>≤ 7% — confirmed at dispatch</td></tr>
+          <tr><td>Fermentation</td><td>85–90% — profile dependent</td></tr>
+          <tr><td>Cadmium</td><td>Very low to none — confirmed by independent testing</td></tr>
+          <tr><td>Pesticide Residues</td><td>Very low to none</td></tr>
+          <tr><td>Shipping</td><td>FOB Corinto — other Incoterms available on request</td></tr>
+          <tr><td>Delivery Time</td><td>30–50 days from FOB Corinto to destination port</td></tr>
+          <tr><td>Pricing</td><td>NY futures base + sustainability premium · contact for current rate</td></tr>
+          <tr><td>Post-Harvest</td><td>Proprietary — available under NDA to qualified buyers</td></tr>
+          <tr><td>Co-Development</td><td>Yes — we work with buyers to develop custom profiles</td></tr>
+          <tr><td>Organic</td><td>Not organic · Rainforest Alliance certified</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-top:64px;" class="two-col">
+      <div>
+        <div class="section-label">FAQ</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:42px;color:var(--text);line-height:1;">Common questions.</h3>
+      </div>
+      <div class="faq-c">
+        <div class="faq-item"><div class="faq-q">Is your cacao Rainforest Alliance certified?</div><div class="faq-a">Yes. Rainforest Alliance (UTZ standard) — annual independent audit covering sustainable agriculture, fair labour, and environmental protection.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I get a sample?</div><div class="faq-a">Yes. Use the form below. We work with qualified buyers on sample programmes before commercial orders.</div></div>
+        <div class="faq-item"><div class="faq-q">What is your fermentation process?</div><div class="faq-a">Proprietary — developed in-house with international consultants. Full details available to qualified buyers under NDA.</div></div>
+        <div class="faq-item"><div class="faq-q">Can you develop a custom flavour profile?</div><div class="faq-a">Yes. We work closely with buyers to co-develop profiles tailored to specific production needs. Contact us to begin a conversation.</div></div>
+        <div class="faq-item"><div class="faq-q">What are your MOQs and pricing?</div><div class="faq-a">Pricing is NY futures base + sustainability premium. Contact us for current pricing and available volume per profile.</div></div>
+        <div class="faq-item"><div class="faq-q">Is this cacao organic?</div><div class="faq-a">Not organic. Rainforest Alliance certified, 100% traceable from our own estate, very low to no cadmium, no pesticide residues.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact" id="contact">
+  <div class="inq-grid">
+    <div>
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-h">Request a sample<br/>or start a <em style="font-style:italic;color:var(--cacao);">conversation.</em></h2>
+      <div class="section-rule"></div>
+      <p class="section-body" style="margin:18px 0 28px;">
+        Whether you need a sample, want to discuss a supply agreement, are interested in co-developing a new profile, or need full post-harvest details under NDA — we'd love to hear from you.
+      </p>
+
+      <div class="ic">
+        <div class="ic-icon">📧</div>
+        <div><div class="ic-title">Email</div><div class="ic-body">cacao@haciendalabu.com</div></div>
+      </div>
+      <div class="ic">
+        <div class="ic-icon">💬</div>
+        <div><div class="ic-title">WhatsApp</div><div class="ic-body">+505 5809-3417 · Mon–Fri 8am–6pm CST</div></div>
+      </div>
+      <div class="ic">
+        <div class="ic-icon">🌱</div>
+        <div><div class="ic-title">Certifications</div><div class="ic-body">Rainforest Alliance (UTZ) · Full traceability documentation provided</div></div>
+      </div>
+      <div class="ic">
+        <div class="ic-icon">🚢</div>
+        <div><div class="ic-title">Export</div><div class="ic-body">FOB Corinto · 30–50 days · Alternative Incoterms available</div></div>
+      </div>
+    </div>
+
+    <form class="form" onsubmit="event.preventDefault();">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" /></div>
+        <div class="form-group"><label class="form-label">Company</label><input class="form-input" type="text" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Country</label><input class="form-input" type="text" /></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Request Type</label>
+          <select class="form-select">
+            <option>Select…</option>
+            <option>Sample request</option>
+            <option>Supply agreement</option>
+            <option>Custom profile co-development</option>
+            <option>NDA &amp; protocol documentation</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Profile Interest</label>
+          <select class="form-select">
+            <option>Select…</option>
+            <option>Labu</option>
+            <option>Chumilo</option>
+            <option>Custom development</option>
+            <option>Both / undecided</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Annual Volume (MT)</label><input class="form-input" type="text" /></div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea"></textarea></div>
+      <button class="btn-primary" type="submit">Send Request →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo-name">Hacienda Labu</div>
+      <div class="foot-logo-tag">Estate · Nicaragua</div>
+      <p class="foot-desc">Certified Teak, Fine Flavour Cacao, and verified carbon credits from Nicaragua's North Caribbean Coast.</p>
+    </div>
+    <div class="fc">
+      <h5>Estate</h5>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="teak.html">Teak</a></li>
+        <li><a href="cacao.html">Cacao</a></li>
+        <li><a href="carbon.html">Carbon Credits</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h5>Impact</h5>
+      <ul>
+        <li><a href="impact.html">Sustainability</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="#contact">Buyer Inquiries</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span class="foot-copy">© Hacienda Labu</span>
+    <span class="foot-certs">Rainforest Alliance · FSC® C108572 · Verra VCS 2365</span>
+  </div>
+</footer>
+
+<script>
+  const c = document.getElementById('c'), cr = document.getElementById('cr');
+  if (c && cr && window.matchMedia('(min-width:981px)').matches) {
+    document.addEventListener('mousemove', e => {
+      c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
+      cr.style.left = e.clientX + 'px'; cr.style.top = e.clientY + 'px';
+    });
+  }
+</script>
+
+</body>
+</html>
